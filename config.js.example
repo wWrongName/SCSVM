@@ -1,0 +1,10 @@
+const MODE = process.env.NODE_ENV ? process.env.NODE_ENV : "develop"
+
+module.exports = {
+    mode : MODE,
+    compiler : {
+        name : "solc",
+        version : "x.x.x"
+    },
+    swc : [x]
+}

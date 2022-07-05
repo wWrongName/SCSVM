@@ -1,0 +1,25 @@
+{
+  "mode" : {
+    "alias": "m",
+    "type": "string",
+    "description": "Run in 'development' or 'production' mode",
+    "configPath" : "mode"
+  },
+  "compiler" : {
+    "alias": "c",
+    "type" : "string",
+    "description": "Set a compiler for smart contract processing",
+    "configPath" : "compiler.name"
+  },
+  "version" : {
+    "alias": "v",
+    "type": "string",
+    "description": "Set a version of compiler",
+    "configPath" : "compiler.version"
+  },
+  "swc" : {
+    "type": "number",
+    "description": "Set a certain smart contract weakness ID",
+    "configPath" : "swc"
+  }
+}

@@ -2,7 +2,7 @@
   "name": "scsvm",
   "version": "1.0.0",
   "description": "smart-contract security verification module",
-  "main": "index.js",
+  "main": "SCSVM.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wWrongName/SCSVM/issues"
   },
-  "homepage": "https://github.com/wWrongName/SCSVM#readme"
+  "homepage": "https://github.com/wWrongName/SCSVM#readme",
+  "dependencies": {
+    "yargs": "^17.5.1"
+  }
 }
