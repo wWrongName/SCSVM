@@ -21,5 +21,17 @@
     "type": "number",
     "description": "Set a certain smart contract weakness ID",
     "configPath" : "swc"
+  },
+  "log_level" : {
+    "alias": "l",
+    "type": "string",
+    "description": "Set logger level (error, warn, info, debug, silly)",
+    "configPath" : "log.level"
+  },
+  "log_path" : {
+    "alias": "p",
+    "type": "string",
+    "description": "Set path to log file",
+    "configPath" : "log.path"
   }
 }

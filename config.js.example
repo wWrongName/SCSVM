@@ -1,3 +1,5 @@
+const path = require("path")
+
 const MODE = process.env.NODE_ENV ? process.env.NODE_ENV : "develop"
 
 module.exports = {
@@ -5,6 +7,10 @@ module.exports = {
     compiler : {
         name : "solc",
         version : "x.x.x"
+    },
+    log : {
+        level : "info",
+        path : path.join(__dirname, "./logs/scsvm.log")
     },
     swc : [x]
 }
