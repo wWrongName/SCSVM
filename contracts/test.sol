@@ -1,14 +1,35 @@
-pragma solidity ^0.8.0;
+contract ModifierEntrancy {
 
-contract HelloWorld {
+   mapping (address => uint) public tokenBalance;
+   string constant name = "Nu Token";
+   Bank bank;
 
-   string public message;
-
-   constructor(string memory initMessage) {
-      message = initMessage;
+   constructor() public{
+      bank = new Bank();
    }
 
-   function update(string memory newMessage) public {
-      message = newMessage;
+   //If a contract has a zero balance and supports the token give them some token
+   function airDrop() hasNoBalance supportsToken  public{
+      tokenBalance[msg.sender] += 20;
    }
+
+   //Checks that the contract responds the way we want
+   modifier supportsToken() {
+      require(keccak256(abi.encodePacked("Nu Token")) == bank.supportsToken());
+      _;
+   }
+
+   //Checks that the caller has a zero balance
+   modifier hasNoBalance {
+      require(tokenBalance[msg.sender] == 0);
+      _;
+   }
+}
+
+contract Bank{
+
+   function supportsToken() external returns(bytes32) {
+      return keccak256(abi.encodePacked("Nu Token"));
+   }
+
 }

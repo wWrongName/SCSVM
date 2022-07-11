@@ -8,15 +8,16 @@ const config = require(path.join(__dirname, "config.js"))
 
 const SCSVM = require("./SCSVM/SCSVM")
 
-const HEADER = `
-┌───────────────
-        Run SCSVM module
-                    ───────────────┘
-`
+const HEADER = " Run SCSVM module"
 
 
 class Interface {
     constructor (config)  {
+
+        let formatLevel = (level) => {
+            return `⌞ ${level.toUpperCase()}${level.length === 4 ? " " : ""} ⌝`
+        }
+
         let initLogger = () => {
             const logger = winston.createLogger({
                 level: this.config.log.level,
@@ -24,8 +25,8 @@ class Interface {
                     winston.format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
                     winston.format.printf(printfInfo => {
                         if (printfInfo.message === HEADER)
-                            return HEADER
-                        return `⌞ ${printfInfo.level.toUpperCase()}${printfInfo.level.length === 4 ? " " : ""} ⌝ [${printfInfo.timestamp}] - ${printfInfo.message}`
+                            return formatLevel(printfInfo.level) + HEADER
+                        return `${formatLevel(printfInfo.level)} [${printfInfo.timestamp}] - ${printfInfo.message}`
                     })
                 ),
                 transports: [
@@ -87,7 +88,7 @@ class Interface {
         console.info(HEADER)
         console.info(JSON.stringify(this.config))
 
-        this.scsvm = new SCSVM()
+        this.ASTInfo = {}
     }
 
     createSolidityCompilerCommand () {
@@ -103,16 +104,13 @@ class Interface {
     }
 
     revealFileName (header) {
-        let filename = header.match(this.config.stdout_parser.filename_regexp)[0].trim()
+        let filename = header.match(this.config.stdout_parser.filename_regexp)[0].trim().replace(this.config.docker.mount, "")
         console.silly(filename)
         return filename
     }
 
     memoriseAST (file, AST) {
-        this.ASTInfo = {
-            file : file,
-            ast : JSON.parse(AST)
-        }
+        this.ASTInfo[file] = JSON.parse(AST)
     }
 
     parseStdOut (stdout) {
@@ -132,17 +130,32 @@ class Interface {
     }
 
     runSolidityCompiler () {
-        let command = this.createSolidityCompilerCommand()
-        console.silly(command)
-        child_process.exec(command, ((error, stdout, stderr) => {
-            if (error) {
-                console.error(error)
-                return
-            }
-            this.parseStdOut(stdout)
-        }))
+        return new Promise((resolve, reject) => {
+            let command = this.createSolidityCompilerCommand()
+            console.silly(command)
+            child_process.exec(command, ((error, stdout, stderr) => {
+                if (error) {
+                    reject(error)
+                    return
+                }
+                this.parseStdOut(stdout)
+                resolve()
+            }))
+        })
+    }
+
+    analyseContract () {
+        // check some necessities (like constructor, etc)
+        let scsvm = new SCSVM(this.ASTInfo)
+        let res = scsvm.prerequisites()
+        if (res.success)
+            scsvm.analyse(this.config.swc)
+        else
+            console.error(`Prerequisites are not satisfied. Info: ${res.info}`)
     }
 }
 
 const scsvmInterface = new Interface(config)
 scsvmInterface.runSolidityCompiler()
+.then(() => scsvmInterface.analyseContract())
+.catch(err => console.error(err))
