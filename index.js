@@ -145,7 +145,6 @@ class Interface {
     }
 
     analyseContract () {
-        // check some necessities (like constructor, etc)
         let scsvm = new SCSVM(this.ASTInfo)
         let res = scsvm.prerequisites()
         if (res.success)

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wWrongName/SCSVM#readme",
   "dependencies": {
+    "lodash": "^4.17.21",
     "winston": "^3.8.1",
     "yargs": "^17.5.1"
   }

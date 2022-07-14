@@ -1,6 +1,6 @@
 {
-    "test.sol": {
-        "absolutePath": "/scsvm/contracts/test.sol",
+    "scsvm/contracts/test.sol": {
+        "absolutePath": "scsvm/contracts/test.sol",
         "exportedSymbols": {
             "Bank": [
                 81
@@ -15,6 +15,7 @@
             {
                 "abstract": false,
                 "baseContracts": [],
+                "canonicalName": "ModifierEntrancy",
                 "contractDependencies": [
                     81
                 ],
@@ -25,6 +26,7 @@
                     67
                 ],
                 "name": "ModifierEntrancy",
+                "nameLocation": "9:16:0",
                 "nodeType": "ContractDefinition",
                 "nodes": [
                     {
@@ -33,6 +35,7 @@
                         "id": 4,
                         "mutability": "mutable",
                         "name": "tokenBalance",
+                        "nameLocation": "67:12:0",
                         "nodeType": "VariableDeclaration",
                         "scope": 67,
                         "src": "34:45:0",
@@ -78,6 +81,7 @@
                         "id": 7,
                         "mutability": "constant",
                         "name": "name",
+                        "nameLocation": "101:4:0",
                         "nodeType": "VariableDeclaration",
                         "scope": 67,
                         "src": "85:33:0",
@@ -120,6 +124,7 @@
                         "id": 10,
                         "mutability": "mutable",
                         "name": "bank",
+                        "nameLocation": "129:4:0",
                         "nodeType": "VariableDeclaration",
                         "scope": 67,
                         "src": "124:9:0",
@@ -240,6 +245,7 @@
                         "kind": "constructor",
                         "modifiers": [],
                         "name": "",
+                        "nameLocation": "-1:-1:-1",
                         "nodeType": "FunctionDefinition",
                         "parameters": {
                             "id": 11,
@@ -360,6 +366,7 @@
                         "modifiers": [
                             {
                                 "id": 24,
+                                "kind": "modifierInvocation",
                                 "modifierName": {
                                     "id": 23,
                                     "name": "hasNoBalance",
@@ -372,6 +379,7 @@
                             },
                             {
                                 "id": 26,
+                                "kind": "modifierInvocation",
                                 "modifierName": {
                                     "id": 25,
                                     "name": "supportsToken",
@@ -384,6 +392,7 @@
                             }
                         ],
                         "name": "airDrop",
+                        "nameLocation": "293:7:0",
                         "nodeType": "FunctionDefinition",
                         "parameters": {
                             "id": 22,
@@ -627,6 +636,7 @@
                         },
                         "id": 53,
                         "name": "supportsToken",
+                        "nameLocation": "455:13:0",
                         "nodeType": "ModifierDefinition",
                         "parameters": {
                             "id": 37,
@@ -782,6 +792,7 @@
                         },
                         "id": 66,
                         "name": "hasNoBalance",
+                        "nameLocation": "633:12:0",
                         "nodeType": "ModifierDefinition",
                         "parameters": {
                             "id": 54,
@@ -795,11 +806,13 @@
                     }
                 ],
                 "scope": 82,
-                "src": "0:713:0"
+                "src": "0:713:0",
+                "usedErrors": []
             },
             {
                 "abstract": false,
                 "baseContracts": [],
+                "canonicalName": "Bank",
                 "contractDependencies": [],
                 "contractKind": "contract",
                 "fullyImplemented": true,
@@ -808,6 +821,7 @@
                     81
                 ],
                 "name": "Bank",
+                "nameLocation": "726:4:0",
                 "nodeType": "ContractDefinition",
                 "nodes": [
                     {
@@ -932,6 +946,7 @@
                         "kind": "function",
                         "modifiers": [],
                         "name": "supportsToken",
+                        "nameLocation": "747:13:0",
                         "nodeType": "FunctionDefinition",
                         "parameters": {
                             "id": 68,
@@ -948,6 +963,7 @@
                                     "id": 70,
                                     "mutability": "mutable",
                                     "name": "",
+                                    "nameLocation": "-1:-1:-1",
                                     "nodeType": "VariableDeclaration",
                                     "scope": 80,
                                     "src": "780:7:0",
@@ -980,7 +996,8 @@
                     }
                 ],
                 "scope": 82,
-                "src": "717:139:0"
+                "src": "717:139:0",
+                "usedErrors": []
             }
         ],
         "src": "0:856:0"
