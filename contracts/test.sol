@@ -8,8 +8,20 @@ contract ModifierEntrancy {
       bank = new Bank();
    }
 
+
+   function supportasdToken() internal returns(uint) {
+      return 1;
+   }
+
    //If a contract has a zero balance and supports the token give them some token
    function airDrop() hasNoBalance supportsToken  public{
+      supportasdToken();
+      if (tokenBalance[msg.sender] == 0) {
+         require(tokenBalance[msg.sender] == 90);
+         tokenBalance[msg.sender] += 10;
+      } else {
+         tokenBalance[msg.sender] += 80;
+      }
       tokenBalance[msg.sender] += 20;
    }
 

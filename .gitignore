@@ -1,6 +1,7 @@
 .idea
 config.js
 package-lock.json
+AST.json
 
 # Logs
 logs
