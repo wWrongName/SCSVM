@@ -95,7 +95,7 @@ let TDetector = function (info, ASTs) {
     this.getContract = (id) => {
         let body = _getContractTree(id)
         let state = []
-        _collectContractState(body, state)
+        // _collectContractState(body, state)
         return {
             body : body,
             state : state

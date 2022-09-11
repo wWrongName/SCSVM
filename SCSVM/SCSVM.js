@@ -3,6 +3,7 @@ const Reentrancy = require("./detectors/Reentrancy")
 
 class SCSVM {
     constructor (AST) {
+        console.log(AST)
         let initEntryFile = () => {
             let keys = Object.keys(AST)
             if (keys)
@@ -22,6 +23,7 @@ class SCSVM {
     }
 
     analyse (swc=[]) {
+        // console.info(`Found reentrancy (13:5:0 - 16:9:0)`)
         if (typeof swc === "number")
             swc = [swc]
         this.detectors.forEach(detector => {
