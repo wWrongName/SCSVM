@@ -1,0 +1,24 @@
+{
+  "name": "scsvm",
+  "version": "1.0.0",
+  "description": "smart-contract security verification module",
+  "main": "SCSVM.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wWrongName/SCSVM.git"
+  },
+  "author": "wWrongName",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wWrongName/SCSVM/issues"
+  },
+  "homepage": "https://github.com/wWrongName/SCSVM#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "winston": "^3.8.1",
+    "yargs": "^17.5.1"
+  }
+}

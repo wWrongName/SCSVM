@@ -1,0 +1,28 @@
+const path = require("path")
+
+const MODE = process.env.NODE_ENV ? process.env.NODE_ENV : "develop"
+
+module.exports = {
+    mode : MODE,
+    compiler : {
+        name : "solc",
+        version : "x.x.x"
+    },
+    log : {
+        level : "info",
+        path : path.join(__dirname, "./logs/scsvm.log")
+    },
+    contract : {
+        file : "test.sol",
+        path : path.join(__dirname, "./contracts")
+    },
+    swc : [x],
+    docker : {
+        mount : "/scsvm/contracts/",
+        permanent : false
+    },
+    stdout_parser : {
+        init_phrase : "JSON AST",
+        headers : "======= {filename} ======="
+    }
+}
